@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NicknameActivity"
-    android:padding="30dp">
-
+    android:padding="30dp"
+    android:background="@drawable/background_image2">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="여우야모입니"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="35sp"
@@ -21,7 +22,25 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/_process_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/_process_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/_process_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/_process_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
@@ -59,7 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="닉네임을 입력하세요."
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:minHeight="48dp" />
 
     </FrameLayout>
 

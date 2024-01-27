@@ -34,14 +34,13 @@ class StyleActivity : AppCompatActivity() {
         val buttonOfficeLook = findViewById<Button>(R.id.buttonOfficeLook)
         val buttonCasual = findViewById<Button>(R.id.buttonCasual)
         val buttonGirly = findViewById<Button>(R.id.buttonGirly)
-        val buttonStreet = findViewById<Button>(R.id.buttonStreet)
 
 
         // 불러온 닉네임을 TextView에 설정함.
         textViewStyleQuestion.text = "${nickname}님, 패션 스타일을 고르세요!"
 
         // 버튼들에 대한 리스너 설정
-        val buttons = listOf(buttonOfficeLook, buttonCasual, buttonGirly, buttonStreet)
+        val buttons = listOf(buttonOfficeLook, buttonCasual, buttonGirly)
         buttons.forEach { button ->
             button.setOnClickListener {
                 // 이전에 선택된 버튼의 색상을 초기 상태로 되돌립니다
@@ -65,20 +64,9 @@ class StyleActivity : AppCompatActivity() {
             if (selectedStyle == null) {
                 Toast.makeText(this, "하나를 선택해주세요", Toast.LENGTH_SHORT).show()
             } else {
-                if (selectedStyle == "스트릿") {
-                    Toast.makeText(this, "스트릿 패션은 아직 준비 중입니다 :(", Toast.LENGTH_SHORT).show()
-                } else {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
             }
         }
     }
-
-    fun goToPreviousActivity(view: View) {
-        // 이전으로 돌아가기 텍스트 클릭 시 TemperatureActivity로 이동
-        val intent = Intent(this, TemperatureActivity::class.java)
-        startActivity(intent)
-
-    }
-}
