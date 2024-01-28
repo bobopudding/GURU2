@@ -2,11 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
 
     <application
         android:allowBackup="true"
@@ -18,7 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GURU2"
         tools:targetApi="31">
-
+        <activity
+            android:name=".MypageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WeathercastActivity"
+            android:exported="false"
+            android:label="@string/title_activity_weathercast"
+            android:theme="@style/Theme.GURU2" />
+        <activity
+            android:name=".activity_weathercast"
+            android:exported="false"
+            android:label="@string/title_activity_weathercast"
+            android:theme="@style/Theme.GURU2" />
         <activity
             android:name=".StyleActivity"
             android:exported="false" />
@@ -41,7 +51,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB5YW9mo5wNEh-bSoeh29fslzzX54VFh_0" />
-
     </application>
 
 </manifest>

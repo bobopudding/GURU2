@@ -36,6 +36,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.loopj.android.http.RequestParams
 import android.util.Log
+import android.content.Intent
 
 
 
@@ -100,6 +101,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        val button_weathercast = findViewById<ImageView>(R.id.button_weathercast)
+        button_weathercast.setOnClickListener {
+            val intent = Intent(this, WeathercastActivity::class.java)
+            startActivity(intent)
+        }
+
+        val button_mypage = findViewById<ImageView>(R.id.button_mypage)
+        button_mypage.setOnClickListener {
+            val intent = Intent(this, MypageActivity::class.java)
+            startActivity(intent)
     }
 
     private fun startLocationUpdates() {
