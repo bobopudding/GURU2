@@ -36,6 +36,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.loopj.android.http.RequestParams
 import android.util.Log
+import android.location.Geocoder
+import java.io.IOException
+import java.util.*
 
 
 
@@ -87,6 +90,9 @@ class MainActivity : AppCompatActivity() {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         }
 
+
+
+
         // 위치 콜백 설정
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult) {
@@ -97,6 +103,9 @@ class MainActivity : AppCompatActivity() {
                     textViewLocation.text = "위도: ${location.latitude}, 경도: ${location.longitude}"
                     // 날씨 정보 가져오기
                     getWeatherInCurrentLocation(location)
+
+                    // 위치 업데이트 후 주소 업데이트
+                    getAddressFromLocation(location.latitude, location.longitude)
                 }
             }
         }
@@ -114,6 +123,7 @@ class MainActivity : AppCompatActivity() {
             fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
         }
     }
+
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -188,6 +198,30 @@ class MainActivity : AppCompatActivity() {
             weatherIcon.setImageResource(resourceID)
         }
     }
+
+    private fun getAddressFromLocation(latitude: Double, longitude: Double) {
+        val geocoder = Geocoder(this, Locale.KOREA) // 한국어 설정
+        try {
+            val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+            if (addresses != null && addresses.isNotEmpty()) {
+                val addressParts = addresses[0].getAddressLine(0).split(" ")
+                val extractedAddress = "${addressParts[2]} ${addressParts[3]}"
+                val textViewLocation = findViewById<TextView>(R.id.textViewLocation)
+                textViewLocation.text = extractedAddress
+
+                Log.d("MainActivity", "Address: $extractedAddress")
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+
+
+
+
+
+
 
     override fun onPause() {
         super.onPause()
