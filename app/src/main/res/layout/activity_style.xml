@@ -7,26 +7,8 @@
     android:padding="16dp"
     tools:context=".StyleActivity"
     tools:layout_editor_absoluteX="-26dp"
+    android:background="@drawable/background_image2"
     tools:layout_editor_absoluteY="-54dp">
-
-    <ImageView
-        android:id="@+id/_process_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:src="@drawable/_process_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/_process_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="208dp"
-        android:layout_marginTop="108dp"
-        android:src="@drawable/process_3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/buttonGroupStyle"
@@ -40,12 +22,23 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imageViewRefresh"
+        android:layout_width="159dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="108dp"
+        android:src="@drawable/logo_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textViewLocation"
+        tools:ignore="NotSibling" />
+
     <Button
         android:id="@+id/buttonNextStyle"
         android:layout_width="270dp"
         android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#88C6F7"
+        android:fontFamily="@font/pretendardbold"
         android:text="다음으로"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -55,40 +48,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewStyleUpdate" />
 
     <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:onClick="goToPreviousActivity"
-        android:text="이전으로 돌아가기"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonNextStyle"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textViewLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="36dp"
-        android:text="여우야모입니"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textViewStyleUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="456dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="500dp"
+        android:fontFamily="@font/pretendardregular"
         android:text="더 많은 스타일이 업데이트 될 예정입니다!\n조금만 기다려 주세요 :)"
+        android:textAlignment="center"
+        android:textColor="@color/lightgray"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,22 +65,13 @@
         android:id="@+id/textViewStyleQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="164dp"
-        android:text="'닉네임반영'님, 패션 스타일을 고르세요!"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonOfficeLook"
-        android:layout_width="220dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="204dp"
-        android:backgroundTint="#D8D5DB"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:text="오피스룩"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="152dp"
+        android:fontFamily="@font/pretendardsemibold"
+        android:text="'닉네임반영'님이\n추구하시는 패션 스타일이 궁금해요!"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -120,11 +80,26 @@
         android:layout_width="220dp"
         android:layout_height="55dp"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="320dp"
         android:backgroundTint="#D8D5DB"
+        android:fontFamily="@font/pretendardmedium"
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:text="캐주얼"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonOfficeLook"
+        android:layout_width="220dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="240dp"
+        android:backgroundTint="#D8D5DB"
+        android:fontFamily="@font/pretendardmedium"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="오피스룩"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -133,24 +108,12 @@
         android:layout_width="220dp"
         android:layout_height="55dp"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="400dp"
         android:backgroundTint="#D8D5DB"
+        android:fontFamily="@font/pretendardmedium"
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:text="걸리시"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonStreet"
-        android:layout_width="220dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="372dp"
-        android:backgroundTint="#D8D5DB"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:text="스트릿"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
