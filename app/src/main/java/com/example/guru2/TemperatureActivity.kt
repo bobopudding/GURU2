@@ -32,7 +32,7 @@ class TemperatureActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("AppPref", MODE_PRIVATE)
         val nickname = sharedPref.getString("NICKNAME", "사용자") ?: "사용자"
-        textViewQuestionTemperature.text = "${nickname}님! \n 평소 체감 온도는 어떤 편인가요?"
+        textViewQuestionTemperature.text = "${nickname}님! 평소 체감 온도는 어떤 편인가요?"
 
 
         radioButtonNormal.setOnClickListener {
