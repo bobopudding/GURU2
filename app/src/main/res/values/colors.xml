@@ -2,7 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#616161</color>
     <color name="skyblue">#88C6F7</color>
+    <color name="darkblue">#2D3142</color>
+    <color name="lightgray">#ACACB4</color>
     <color name="defaultButtonColor">#D8D5DB</color>
     <color name="selectedButtonColor">#88C6F7</color>
 </resources>

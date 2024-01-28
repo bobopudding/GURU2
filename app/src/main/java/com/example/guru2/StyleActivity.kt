@@ -34,14 +34,12 @@ class StyleActivity : AppCompatActivity() {
         val buttonOfficeLook = findViewById<Button>(R.id.buttonOfficeLook)
         val buttonCasual = findViewById<Button>(R.id.buttonCasual)
         val buttonGirly = findViewById<Button>(R.id.buttonGirly)
-        val buttonStreet = findViewById<Button>(R.id.buttonStreet)
-
 
         // 불러온 닉네임을 TextView에 설정함.
-        textViewStyleQuestion.text = "${nickname}님, 패션 스타일을 고르세요!"
+        textViewStyleQuestion.text = "${nickname}님이\n추구하시는 패션 스타일이 궁금해요!"
 
         // 버튼들에 대한 리스너 설정
-        val buttons = listOf(buttonOfficeLook, buttonCasual, buttonGirly, buttonStreet)
+        val buttons = listOf(buttonOfficeLook, buttonCasual, buttonGirly)
         buttons.forEach { button ->
             button.setOnClickListener {
                 // 이전에 선택된 버튼의 색상을 초기 상태로 되돌립니다
