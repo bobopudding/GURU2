@@ -220,9 +220,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
     override fun onPause() {
         super.onPause()
         if (this::mLocationManager.isInitialized) {
