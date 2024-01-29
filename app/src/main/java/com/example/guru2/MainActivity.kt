@@ -41,6 +41,14 @@ import java.io.IOException
 import java.util.*
 import android.content.Intent
 import android.widget.ImageButton
+import android.os.StrictMode
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserException
+import org.xmlpull.v1.XmlPullParserFactory
+import javax.net.ssl.HttpsURLConnection
+
+
+
 
 
 
@@ -70,6 +78,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
+
 
         val Forecast = findViewById<ImageButton>(R.id.ImageButtonForecast)
         Forecast.setOnClickListener {
@@ -119,6 +131,10 @@ class MainActivity : AppCompatActivity() {
 
                             // 위치 업데이트 후 주소 업데이트
                             getAddressFromLocation(location.latitude, location.longitude)
+
+                            // 대기질 데이터를 가져와서 textViewAirQuality를 업데이트합니다.
+                            getAirQuality(location.latitude, location.longitude)
+
                         }
                     }
                 }
@@ -204,10 +220,62 @@ class MainActivity : AppCompatActivity() {
                         e.printStackTrace()
                     }
                 }
+
+
+
                 thread.start()
             }
 
-            private fun doNetworking(params: RequestParams) {
+    private fun getAirQuality(latitude: Double, longitude: Double) {
+        val apiKey = "94a991754841d780d8efb651991af19f"
+        val airQualityUrl =
+            "https://api.openweathermap.org/data/2.5/air_pollution?lat=$latitude&lon=$longitude&appid=$apiKey"
+
+        val thread = Thread {
+            try {
+                val url = URL(airQualityUrl)
+                val connection = url.openConnection() as HttpsURLConnection
+                connection.requestMethod = "GET"
+                connection.connect()
+
+                val responseCode = connection.responseCode
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+                    val reader = BufferedReader(InputStreamReader(connection.inputStream))
+                    val response = StringBuilder()
+                    var line: String?
+                    while (reader.readLine().also { line = it } != null) {
+                        response.append(line)
+                    }
+                    val jsonResponse = JSONObject(response.toString())
+                    val aqi = jsonResponse.getJSONArray("list").getJSONObject(0).getJSONObject("main").getInt("aqi")
+                    val airQualityText = when {
+                        aqi <= 30 -> "좋음"
+                        aqi <= 80 -> "보통"
+                        aqi <= 150 -> "나쁨"
+                        else -> "매우 나쁨"
+                    }
+                    runOnUiThread {
+                        val textViewAirQuality = findViewById<TextView>(R.id.textViewAirQuality)
+                        textViewAirQuality.text = "미세먼지: $airQualityText"
+                    }
+                } else {
+                    Log.e("MainActivity", "네트워크 호출 오류, 응답 코드: $responseCode")
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        thread.start()
+    }
+
+
+
+
+
+
+
+
+    private fun doNetworking(params: RequestParams) {
                 val client = AsyncHttpClient()
 
                 client.get(WEATHER_URL, params, object : JsonHttpResponseHandler() {

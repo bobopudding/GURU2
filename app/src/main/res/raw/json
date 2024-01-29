@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "lofty-buttress-412101",
+  "private_key_id": "82f1840f7dee096bd24fc93f22e32c6904656ddf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDI2xPqVdu+q507\nRX5y09LxqPNEPqL5wDBEw+n/dRNWmRJYS2FOVh6DCL2hcAib0lPtDhOWOzaivUgF\nTi97Q2N1UDRYTnvHjaFz840K6Zd17TOYahwV44Dhpi4tR5L1wz97oPQiM8A18wPJ\n2wFWJnuw46LkzIrmfVZqNlbUEWY8X8prO9FBTakYfFanrPG7qR9BJpI0svUiAUk0\np12adA5wdOfEFPTpWYj5C0vEHn0MZ6++H1zlNl5qll5Ngp/wmk6cZlPIlYtRSBYf\nbbiowrCC7gA5+V4WcbD8S9j6lZb5YshC6YRvc2ajiGxZhqfVWSMHoydhR2ht7vhM\na6iCmwKhAgMBAAECggEACQVp8hL0IS61C6X15XNlHIyBjJWhnUUIBfakqmAYQ8Hx\nRHzyPGH60djRJ5CQGmuKcHG66Hr1W77TnsVhtZATxf+ZskOoJJDUaRBNy+ks79N9\nB0Hwy/zhW4Eqvsbhr18bGVLj1Ctt3R5yk5zeBQAKeynmNY+IR4zmljOll7XGWTzB\nzJFvOjtgsqGLvLLHVxF2738ShPt/M56LvsrF5Eoya3v2VL47ouOgi0qwsTks2T0t\njN0fZC/tRDskvkth8FxWDAgrVSmJTGWgy3bfDK/U+xXrOmHECFQwiKQW/p4MhzpQ\nQ3XnpPwpQz1onoiNecLsRc3b9EI0av0VClDTnTLLNwKBgQDjyyI2z4Fn9JTe0j/L\n0U6ALkbGU7qGlyG71HJHPiC2zTbB9VFRzWr8C3Q6pdDdhKT9gzUwdvdh4gFfkhLK\n6kKxO7UZ93Be6DWTJmcJQx/V7aSQAUqpY5tXQzFca5qcNro2UPOBw/eDZPVEeouV\nRBDqgyQGBPLjlyHzPu72vvU/kwKBgQDhugpmrqAJIUYata4zBJfDCi0n7uJpfO+y\ne7BPRyPsu/PvCphK3bl12CGdEA0r0o20nkOwNW0V1BS28VkcwUNbxPONoOM1jFh2\nnWMtizfSMpVLJT6xu7uIIxE2Wss4OZsA2musZ2b+NtHJjkGmIWcBceqw+8c3+606\nrerOYCkNewKBgQCmnMpeqrHtFlDZFZFCA8rWKILtxwoULXCoEMCxaTjGXB0kCsm6\n+nO4/Ku7xdKaY83F+3UpCKrytjro60/BiUzUk2ZoIrrXQCMHiTwt4yHi+Fm4VqmE\nce2KCwSMo8vHXKQg3F7vWCWuvmZC+xsjR1DUJq1vlakOXFmhsDNa2NtK7wKBgQCE\n6gVB3UWC2sLq61v90pCCWjWos/NB5j1GPardo6g1t561fOmb+98+0ttIHrGCwmKK\nnj6BPZRULCNebdLpKau+F8TJ+piPaWqVvasuoDFoZjyemPnHsiGE0hFKjj/nhZQN\n9o88X064FhOFuWxSpIyAv1FQkZEHF/0y9kGy79B8jQKBgQDBYzUmYtAdliGT6P5d\nAfNRWGcc8v+JF/55Su/4D144sUnD9aUP4Wdg4PjdcYDrRQwHgXw9njzYmWQ5oCp8\nIVJ0LIV9vNrlY/EiICKWGKYwiSO6JLSzhOcwfNiSrY/OdiW6o+rB8Jv7E0clOOY6\nr8w8t5Ki40u73h6R85U34dMggg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "air-pollution@lofty-buttress-412101.iam.gserviceaccount.com",
+  "client_id": "109691040604024380171",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/air-pollution%40lofty-buttress-412101.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
