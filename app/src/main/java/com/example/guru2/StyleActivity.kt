@@ -10,9 +10,6 @@ import android.widget.TextView
 import android.view.View
 import android.graphics.Color
 
-
-
-
 class StyleActivity : AppCompatActivity() {
 
     private var selectedStyle: String? = null
@@ -63,20 +60,9 @@ class StyleActivity : AppCompatActivity() {
             if (selectedStyle == null) {
                 Toast.makeText(this, "하나를 선택해주세요", Toast.LENGTH_SHORT).show()
             } else {
-                if (selectedStyle == "스트릿") {
-                    Toast.makeText(this, "스트릿 패션은 아직 준비 중입니다 :(", Toast.LENGTH_SHORT).show()
-                } else {
-      //              val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this@StyleActivity, MainActivity::class.java)
                     startActivity(intent)
                 }
             }
         }
     }
-
-    fun goToPreviousActivity(view: View) {
-        // 이전으로 돌아가기 텍스트 클릭 시 TemperatureActivity로 이동
-        val intent = Intent(this, TemperatureActivity::class.java)
-        startActivity(intent)
-
-    }
-}

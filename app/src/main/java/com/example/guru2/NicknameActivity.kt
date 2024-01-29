@@ -46,7 +46,7 @@ class NicknameActivity : AppCompatActivity() {
                     setMessage("\"$nickname\" 님이 맞습니까?")
                     setPositiveButton("맞아요") { _, _ ->
                         saveNickname(nickname)
-                        val intent = Intent(this@NicknameActivity, GenderActivity::class.java)
+                        val intent = Intent(this@NicknameActivity, StyleActivity::class.java)
                         startActivity(intent)
                     }
                     setNegativeButton("변경할래요") { dialog, _ ->
