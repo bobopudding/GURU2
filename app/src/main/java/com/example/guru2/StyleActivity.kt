@@ -66,7 +66,7 @@ class StyleActivity : AppCompatActivity() {
                 if (selectedStyle == "스트릿") {
                     Toast.makeText(this, "스트릿 패션은 아직 준비 중입니다 :(", Toast.LENGTH_SHORT).show()
                 } else {
-                    val intent = Intent(this, MainActivity::class.java)
+      //              val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
             }
