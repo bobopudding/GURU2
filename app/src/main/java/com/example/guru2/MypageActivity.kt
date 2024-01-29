@@ -17,7 +17,7 @@ class MypageActivity : AppCompatActivity() {
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
-    }Í
+    }
 
     //툴바 뒤로가기 버튼 동작
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
