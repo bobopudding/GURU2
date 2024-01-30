@@ -5,7 +5,7 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image2"
+    android:background="@drawable/background_main"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-25dp">
@@ -15,32 +15,31 @@
         android:id="@+id/imageViewRefresh"
         android:layout_width="21dp"
         android:layout_height="21dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="228dp"
         android:background="#00D9F3FE"
         android:foreground="@drawable/location_redo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="32dp" />
 
     <ImageView
         android:id="@+id/imageViewLocation"
         android:layout_width="18dp"
         android:layout_height="21dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="110dp"
         android:foreground="@drawable/location_icon"
-        app:layout_constraintEnd_toEndOf="@id/textViewLocation"
+        app:layout_constraintEnd_toStartOf="@+id/textViewLocation"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/pretendardmedium"
         android:text="마포구 상암동"
         android:textSize="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewRefresh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -142,14 +141,15 @@
         android:id="@+id/textViewAirQuality"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/pretendardmedium"
         android:text="미세먼지: 상당히 나쁨"
         android:textAlignment="center"
         android:textColor="@color/gray"
-        app:layout_constraintEnd_toEndOf="@id/imageAir"
-        app:layout_constraintTop_toBottomOf="@id/textViewLocation" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageAir"
+        app:layout_constraintEnd_toEndOf="@+id/imageAir"
+        app:layout_constraintStart_toStartOf="@+id/imageAir"
+        app:layout_constraintTop_toTopOf="@+id/imageAir" />
 
     <ImageView
         android:id="@+id/imageAir"
@@ -157,7 +157,9 @@
         android:layout_height="43dp"
         android:layout_marginStart="224dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
         android:foreground="@drawable/air_info"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
 
@@ -189,9 +191,9 @@
         android:id="@+id/imageWeatherImage"
         android:layout_width="218dp"
         android:layout_height="98dp"
-        android:layout_marginStart="104dp"
         android:layout_marginTop="160dp"
-        android:src="@drawable/weather_illust"
+        android:src="@drawable/illust_sunny"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
 
@@ -219,16 +221,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
 
     <ImageView
-        android:id="@+id/imageCharacterImage"
-        android:layout_width="365dp"
-        android:layout_height="373dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="244dp"
-        android:src="@drawable/casual_winter_standard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
-
-    <ImageView
         android:id="@+id/imageCharacterShadow"
         android:layout_width="100dp"
         android:layout_height="30dp"
@@ -237,6 +229,15 @@
         android:src="@drawable/character_shadow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
+
+    <ImageView
+        android:id="@+id/imageCharacterImage"
+        android:layout_width="365dp"
+        android:layout_height="373dp"
+        android:src="@drawable/casual_winter_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="297dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
