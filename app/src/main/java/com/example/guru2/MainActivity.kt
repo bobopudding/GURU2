@@ -46,6 +46,12 @@ import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import org.xmlpull.v1.XmlPullParserFactory
 import javax.net.ssl.HttpsURLConnection
+import com.google.android.gms.maps.model.LatLng
+import java.util.*
+import okhttp3.OkHttpClient
+import okhttp3.Request as OkHttpRequest
+
+
 
 
 
@@ -134,6 +140,14 @@ class MainActivity : AppCompatActivity() {
 
                             // 대기질 데이터를 가져와서 textViewAirQuality를 업데이트합니다.
                             getAirQuality(location.latitude, location.longitude)
+
+                            // onLocationChanged 호출
+                            onLocationChanged(location)
+
+                            // getTimeZoneId 호출
+                            val latLng = LatLng(location.latitude, location.longitude)
+                            val timeZoneId = getTimeZoneId(latLng)
+                            Log.d("MainActivity", "getTimeZoneId - Latitude: ${latLng.latitude}, Longitude: ${latLng.longitude}, TimeZoneId: $timeZoneId")
 
                         }
                     }
@@ -268,6 +282,54 @@ class MainActivity : AppCompatActivity() {
         thread.start()
     }
 
+    // 위치 변경이 감지될 때 호출되는 함수
+    private fun onLocationChanged(location: Location) {
+        // 현재 위치의 좌표를 LatLng 객체로 변환
+        val latLng = LatLng(location.latitude, location.longitude)
+
+        // Google Time Zone API를 사용하여 시간대 정보 가져오기
+        val timeZoneId = getTimeZoneId(latLng)
+
+        // 시간대 정보를 기반으로 현재 시간 계산
+        val currentTime = Calendar.getInstance(TimeZone.getTimeZone(timeZoneId))
+        val month = currentTime.get(Calendar.MONTH) + 1 // 월은 0부터 시작하므로 +1
+        val day = currentTime.get(Calendar.DAY_OF_MONTH)
+
+        // 날짜를 표시하는 TextView 업데이트
+        val textViewDate = findViewById<TextView>(R.id.textViewDate)
+        textViewDate.text = "오늘은 ${month}월 ${day}일"
+
+        Log.d("MainActivity", "onLocationChanged - Latitude: ${location.latitude}, Longitude: ${location.longitude}, TimeZoneId: $timeZoneId")
+    }
+
+
+
+
+    // LatLng 좌표를 기반으로 시간대 ID 가져오기
+    private fun getTimeZoneId(latLng: LatLng): String {
+        val timeZoneUrl = "https://maps.googleapis.com/maps/api/timezone/json?location=${latLng.latitude},${latLng.longitude}&timestamp=${System.currentTimeMillis() / 1000}&key=AIzaSyB5YW9mo5wNEh-bSoeh29fslzzX54VFh_0"
+
+        val httpClient = OkHttpClient()
+        val request = OkHttpRequest.Builder()
+            .url(timeZoneUrl)
+            .build()
+
+        try {
+            val response = httpClient.newCall(request).execute()
+            if (response.isSuccessful) {
+                val jsonResponse = JSONObject(response.body?.string() ?: "")
+                val timeZoneId = jsonResponse.optString("timeZoneId")
+
+                Log.d("MainActivity", "getTimeZoneId - Latitude: ${latLng.latitude}, Longitude: ${latLng.longitude}, TimeZoneId: $timeZoneId")
+
+                return timeZoneId
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return TimeZone.getDefault().id
+    }
 
 
 
