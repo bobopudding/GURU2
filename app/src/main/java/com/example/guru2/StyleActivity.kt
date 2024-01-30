@@ -61,7 +61,8 @@ class StyleActivity : AppCompatActivity() {
                 Toast.makeText(this, "하나를 선택해주세요", Toast.LENGTH_SHORT).show()
             } else {
                     val intent = Intent(this@StyleActivity, MainActivity::class.java)
-                    startActivity(intent)
+                intent.putExtra("selectedStyle", selectedStyle)
+                startActivity(intent)
                 }
             }
         }

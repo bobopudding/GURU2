@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherState: TextView
     private lateinit var temperature: TextView
     private lateinit var weatherIcon: ImageView
+    private lateinit var characterImage: ImageView
 
     private lateinit var mLocationManager: LocationManager
     private lateinit var mLocationListener: LocationListener
@@ -99,6 +100,7 @@ class MainActivity : AppCompatActivity() {
                 temperature = findViewById(R.id.textViewTemperature)
                 weatherState = findViewById(R.id.textTemperatureInfo)
                 weatherIcon = findViewById(R.id.imageWeatherIcon)
+                characterImage = findViewById(R.id.imageCharacterImage)
 
                 // 위치 서비스 클라이언트 초기화
                 fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -299,6 +301,18 @@ class MainActivity : AppCompatActivity() {
                     weatherState.text = weather.weatherType
                     val resourceID = resources.getIdentifier(weather.icon, "drawable", packageName)
                     weatherIcon.setImageResource(resourceID)
+
+                    // WeatherData에서 가져온 온도를 Double로 변환합니다.
+                    val temperature = weather.tempString.toDoubleOrNull() ?: 0.0
+
+                    // 온도에 따라 다른 이미지 설정
+                    when {
+                        temperature <= 5 -> characterImage.setImageResource(R.drawable.casual_1)
+                        temperature in 6.0..11.0 -> characterImage.setImageResource(R.drawable.casual_2)
+                        temperature in 12.0..19.0 -> characterImage.setImageResource(R.drawable.casual_3)
+                        temperature in 20.0..26.0 -> characterImage.setImageResource(R.drawable.casual_4)
+                        else -> characterImage.setImageResource(R.drawable.casual_5)
+                    }
                 }
             }
 
