@@ -19,9 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="패션 스타일 변경"
+            android:fontFamily="@font/pretendardbold"
             android:textColor="@color/white"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -31,9 +31,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="‘닉네임반영'님이\n추구하시는 패션 스타일이 궁금해요!"
+        android:fontFamily="@font/pretendardsemibold"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -47,7 +47,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="더 많은 스타일이 업데이트 될 예정입니다!\n조금만 기다려주세요:)"
-        android:textSize="13sp"
+        android:fontFamily="@font/pretendardregular"
+        android:textColor="@color/lightgray"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,50 +67,38 @@
 
         <Button
             android:id="@+id/buttonCasual"
-            android:layout_width="170dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/button_off"
-            android:text="캐주얼"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/buttonGirlish"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:layout_width="220dp"
+            android:layout_height="55dp"
+            android:backgroundTint="#D8D5DB"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="16sp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="캐주얼" />
 
         <Button
             android:id="@+id/buttonGirlish"
-            android:layout_width="170dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="25dp"
-            android:background="@drawable/button_off"
-            android:text="걸리시"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/buttonGirlish"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:layout_width="220dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#D8D5DB"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="16sp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="걸리시" />
 
         <Button
             android:id="@+id/buttonOffice"
-            android:layout_width="170dp"
-            android:layout_height="48dp"
-            android:background="@drawable/button_off"
-            android:text="오피스룩"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/buttonGirlish"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:layout_width="220dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#D8D5DB"
+            android:fontFamily="@font/pretendardmedium"
+            android:textSize="16sp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="오피스룩"/>
     </LinearLayout>
 
 

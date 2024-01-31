@@ -20,9 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="스타일 더보기"
+            android:fontFamily="@font/pretendardbold"
             android:textColor="@color/white"
-            android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
     </androidx.appcompat.widget.Toolbar>
 
