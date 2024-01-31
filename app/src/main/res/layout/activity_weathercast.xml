@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="주간예보"
+            android:text="현재 날씨 상세보기"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="5일간의 날씨를 확인해보세요!"
+        android:text="오늘의 날씨를 더 자세히 볼 수 있어요:)"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -61,6 +61,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
+
+
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -68,61 +70,17 @@
             android:background="@drawable/weather_box">
 
             <TextView
-                android:id="@+id/textDay1"
+                android:id="@+id/textViewDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="어제"
+                android:text="날씨"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_gravity="center"/>
 
-            <ImageView
-                android:id="@+id/imageWeather1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="8dp"
-                app:srcCompat="@drawable/icon_sunny"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textDay1Lowest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1"
-                android:text="-4°"
-                android:textColor="#ACACB4"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:text="~"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textDay1Highest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:text="4°"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
         </LinearLayout>
 
         <LinearLayout
@@ -132,61 +90,17 @@
             android:background="@drawable/weather_box">
 
             <TextView
-                android:id="@+id/textDay2"
+                android:id="@+id/textViewCurrentTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="오늘"
+                android:text="현재온도"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_gravity="center"/>
 
-            <ImageView
-                android:id="@+id/imageWeather2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="8dp"
-                app:srcCompat="@drawable/icon_sunny"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textDay2Lowest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1"
-                android:text="-4°"
-                android:textColor="#ACACB4"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:text="~"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textDay2Highest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:text="4°"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
         </LinearLayout>
 
         <LinearLayout
@@ -196,61 +110,36 @@
             android:background="@drawable/weather_box">
 
             <TextView
-                android:id="@+id/textDay3"
+                android:id="@+id/textViewFeelsLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="내일"
+                android:text="체감온도"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_gravity="center"/>
 
-            <ImageView
-                android:id="@+id/imageWeather3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="8dp"
-                app:srcCompat="@drawable/icon_sunny"
-                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/weather_box">
 
             <TextView
-                android:id="@+id/textDay3Lowest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1"
-                android:text="-4°"
-                android:textColor="#ACACB4"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-
-            <TextView
+                android:id="@+id/textViewMinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="~"
+                android:text="최저기온"
                 android:textSize="17sp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:layout_gravity="center"/>
 
-            <TextView
-                android:id="@+id/textDay3Highest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:text="4°"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
         </LinearLayout>
 
         <LinearLayout
@@ -260,61 +149,74 @@
             android:background="@drawable/weather_box">
 
             <TextView
-                android:id="@+id/textDay4"
+                android:id="@+id/textViewMaxTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="어제"
+                android:text="최고기온"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_gravity="center"/>
 
-            <ImageView
-                android:id="@+id/imageWeather4"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="8dp"
-                app:srcCompat="@drawable/icon_sunny"
-                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/weather_box">
 
             <TextView
-                android:id="@+id/textDay4Lowest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1"
-                android:text="-4°"
-                android:textColor="#ACACB4"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-
-            <TextView
+                android:id="@+id/textViewHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="~"
+                android:text="습도"
                 android:textSize="17sp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:layout_gravity="center"/>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/weather_box">
+
             <TextView
-                android:id="@+id/textDay4Highest"
+                android:id="@+id/textViewPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="4°"
+                android:text="기압"
                 android:textSize="17sp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:layout_gravity="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/weather_box">
+
+            <TextView
+                android:id="@+id/textViewWindDeg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:text="풍향"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -324,62 +226,19 @@
             android:background="@drawable/weather_box">
 
             <TextView
-                android:id="@+id/textDay5"
+                android:id="@+id/textViewWindSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="어제"
+                android:text="풍속"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_gravity="center"/>
 
-            <ImageView
-                android:id="@+id/imageWeather5"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="8dp"
-                app:srcCompat="@drawable/icon_sunny"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textDay5Lowest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1"
-                android:text="-4°"
-                android:textColor="#ACACB4"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:text="~"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textDay5Highest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:text="4°"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

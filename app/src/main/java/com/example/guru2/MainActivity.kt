@@ -65,6 +65,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var locationRequest: LocationRequest
     private val LOCATION_PERMISSION_REQUEST_CODE = 100
 
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
+
+
     companion object {
         const val API_KEY: String = "94a991754841d780d8efb651991af19f"
         const val WEATHER_URL: String = "https://api.openweathermap.org/data/2.5/weather"
@@ -81,6 +85,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mLocationManager: LocationManager
     private lateinit var mLocationListener: LocationListener
 
+    private var location: Location? = null // 위치 정보를 저장할 변수
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,7 +98,14 @@ class MainActivity : AppCompatActivity() {
 
         val Forecast = findViewById<ImageButton>(R.id.ImageButtonForecast)
         Forecast.setOnClickListener {
+            val apiKey = "94a991754841d780d8efb651991af19f"
             val intent = Intent(this, WeathercastActivity::class.java)
+            // 위치 정보를 WeathercastActivity로 전달
+            location?.let {
+                intent.putExtra("latitude", it.latitude)
+                intent.putExtra("longitude", it.longitude)
+            }
+            intent.putExtra("API_KEY", apiKey)
             startActivity(intent)
         }
 
@@ -286,6 +299,8 @@ class MainActivity : AppCompatActivity() {
 
     // 위치 변경이 감지될 때 호출되는 함수
     private fun onLocationChanged(location: Location) {
+        this.location = location // 위치 정보 업데이트
+
         // 현재 위치의 좌표를 LatLng 객체로 변환
         val latLng = LatLng(location.latitude, location.longitude)
 
@@ -300,7 +315,6 @@ class MainActivity : AppCompatActivity() {
         // 날짜를 표시하는 TextView 업데이트
         val textViewDate = findViewById<TextView>(R.id.textViewDate)
         textViewDate.text = "오늘은 ${month}월 ${day}일"
-
         Log.d("MainActivity", "onLocationChanged - Latitude: ${location.latitude}, Longitude: ${location.longitude}, TimeZoneId: $timeZoneId")
     }
 
