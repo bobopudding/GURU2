@@ -112,9 +112,10 @@ class MainActivity : AppCompatActivity() {
 
         val Mypage = findViewById<ImageButton>(R.id.ImageButtonMyPage)
         Mypage.setOnClickListener {
-            val intent = Intent(this, MypageActivity::class.java)
+            val intent = Intent(this@MainActivity, MypageActivity::class.java)
             startActivity(intent)
         }
+
 
                 // 레이아웃의 View를 참조하는 코드 추가
                 temperature = findViewById(R.id.textViewTemperature)

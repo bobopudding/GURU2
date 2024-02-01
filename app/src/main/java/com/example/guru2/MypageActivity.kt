@@ -17,12 +17,14 @@ import android.graphics.PorterDuffXfermode
 import android.graphics.Rect
 import android.graphics.RectF
 import android.util.Log
+import android.widget.TextView
 
 
 class MypageActivity : AppCompatActivity() {
 
     private val PICK_IMAGE_REQUEST = 1
     private lateinit var binding: ActivityMypageBinding
+    private lateinit var textNickname: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,11 @@ class MypageActivity : AppCompatActivity() {
         val ab = supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
+
+        val sharedPref = getSharedPreferences("AppPref", MODE_PRIVATE)
+        val nickname = sharedPref.getString("NICKNAME", "사용자") ?: "사용자"
+        textNickname = findViewById(R.id.textNickname)
+        textNickname.text = "$nickname"
 
     }
 

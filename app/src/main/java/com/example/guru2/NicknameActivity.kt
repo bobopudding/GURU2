@@ -46,8 +46,16 @@ class NicknameActivity : AppCompatActivity() {
                     setMessage("\"$nickname\" 님이 맞습니까?")
                     setPositiveButton("맞아요") { _, _ ->
                         saveNickname(nickname)
-                        val intent = Intent(this@NicknameActivity, StyleActivity::class.java)
-                        startActivity(intent)
+
+                        // 닉네임을 StyleActivity로 전달
+                        val styleIntent = Intent(this@NicknameActivity, StyleActivity::class.java)
+                        styleIntent.putExtra("NICKNAME", nickname)
+                        startActivity(styleIntent)
+
+                        // 닉네임을 MypageActivity로 전달
+                        val mypageIntent = Intent(this@NicknameActivity, MypageActivity::class.java)
+                        mypageIntent.putExtra("NICKNAME", nickname)
+
                     }
                     setNegativeButton("변경할래요") { dialog, _ ->
                         dialog.dismiss()
