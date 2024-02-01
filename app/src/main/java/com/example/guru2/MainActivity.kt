@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherState: TextView
     private lateinit var temperature: TextView
     private lateinit var weatherIcon: ImageView
+    private lateinit var weatherImage: ImageView
     private lateinit var characterImage: ImageView
 
     private lateinit var mLocationManager: LocationManager
@@ -111,14 +112,16 @@ class MainActivity : AppCompatActivity() {
 
         val Mypage = findViewById<ImageButton>(R.id.ImageButtonMyPage)
         Mypage.setOnClickListener {
-            val intent = Intent(this, MypageActivity::class.java)
+            val intent = Intent(this@MainActivity, MypageActivity::class.java)
             startActivity(intent)
         }
+
 
                 // 레이아웃의 View를 참조하는 코드 추가
                 temperature = findViewById(R.id.textViewTemperature)
                 weatherState = findViewById(R.id.textTemperatureInfo)
                 weatherIcon = findViewById(R.id.imageWeatherIcon)
+                weatherImage = findViewById(R.id.imageWeatherImage)
                 characterImage = findViewById(R.id.imageCharacterImage)
 
                 // 위치 서비스 클라이언트 초기화
@@ -387,20 +390,47 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     temperature.text = weather.tempString + " ℃"
                     weatherState.text = weather.weatherType
-                    val resourceID = resources.getIdentifier(weather.icon, "drawable", packageName)
-                    weatherIcon.setImageResource(resourceID)
+                    val iconResourceID = resources.getIdentifier(weather.icon, "drawable", packageName)
+                    weatherIcon.setImageResource(iconResourceID)
+                    val imageResourceID = resources.getIdentifier(weather.image, "drawable", packageName)
+                    weatherImage.setImageResource(imageResourceID)
+
 
                     // WeatherData에서 가져온 온도를 Double로 변환합니다.
                     val temperature = weather.tempString.toDoubleOrNull() ?: 0.0
 
-                    // 온도에 따라 다른 이미지 설정
-                    when {
-                        temperature <= 5 -> characterImage.setImageResource(R.drawable.casual_1)
-                        temperature in 6.0..11.0 -> characterImage.setImageResource(R.drawable.casual_2)
-                        temperature in 12.0..19.0 -> characterImage.setImageResource(R.drawable.casual_3)
-                        temperature in 20.0..26.0 -> characterImage.setImageResource(R.drawable.casual_4)
-                        else -> characterImage.setImageResource(R.drawable.casual_5)
+                    // 선택한 스타일 불러오기
+                    val sharedPref = getSharedPreferences("AppPref", MODE_PRIVATE)
+                    val selectedStyle = sharedPref.getString("SELECTED_STYLE", "")
+
+                    val resourceId = when (selectedStyle) {
+                        "오피스룩" -> when {
+                            temperature <= 5 -> R.drawable.office_1
+                            temperature in 6.0..11.0 -> R.drawable.office_2
+                            temperature in 12.0..19.0 -> R.drawable.office_3
+                            temperature in 20.0..26.0 -> R.drawable.office_4
+                            else -> R.drawable.office_5
+                        }
+                        "캐주얼" -> when {
+                            temperature <= 5 -> R.drawable.casual_1
+                            temperature in 6.0..11.0 -> R.drawable.casual_2
+                            temperature in 12.0..19.0 -> R.drawable.casual_3
+                            temperature in 20.0..26.0 -> R.drawable.casual_4
+                            else -> R.drawable.casual_5
+                        }
+                        "걸리시" -> when {
+                            temperature <= 5 -> R.drawable.girlish_1
+                            temperature in 6.0..11.0 -> R.drawable.girlish_2
+                            temperature in 12.0..19.0 -> R.drawable.girlish_3
+                            temperature in 20.0..26.0 -> R.drawable.girlish_4
+                            else -> R.drawable.girlish_5
+                        }
+                        else -> R.drawable.office_1
                     }
+
+                    // 설정된 이미지 리소스를 characterImage에 적용
+                    characterImage.setImageResource(resourceId)
+
                 }
             }
 

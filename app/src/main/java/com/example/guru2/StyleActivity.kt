@@ -9,6 +9,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.view.View
 import android.graphics.Color
+import android.util.Log
+
 
 class StyleActivity : AppCompatActivity() {
 
@@ -47,6 +49,8 @@ class StyleActivity : AppCompatActivity() {
                     button.setBackgroundColor(Color.parseColor("#88C6F7"))
                     selectedButton = button
                     selectedStyle = button.text.toString()
+
+                    Log.d("Debug", "Selected Style: $selectedStyle")
                 } else {
                     // 이미 선택된 버튼을 다시 클릭하면 선택을 해제합니다
                     selectedButton = null
@@ -60,10 +64,27 @@ class StyleActivity : AppCompatActivity() {
             if (selectedStyle == null) {
                 Toast.makeText(this, "하나를 선택해주세요", Toast.LENGTH_SHORT).show()
             } else {
-                    val intent = Intent(this@StyleActivity, MainActivity::class.java)
-                intent.putExtra("selectedStyle", selectedStyle)
-                startActivity(intent)
+                saveSelectedStyle(selectedStyle!!)
+
+                // 스타일을 MainActivity로 전달
+                val mainintent = Intent(this@StyleActivity, MainActivity::class.java)
+                mainintent.putExtra("selectedStyle", selectedStyle)
+                startActivity(mainintent)
+
+                // 스타일을 MypageActivity로 전달
+                val mypageIntent = Intent(this@StyleActivity, MypageActivity::class.java)
+                mypageIntent.putExtra("selectedStyle", selectedStyle)
                 }
             }
         }
+
+        private fun saveSelectedStyle(selectedStyle: String) {
+            // 선택한 스타일을 'AppPref' 이름의 SharedPreferences에 저장
+            val sharedPref = this.getSharedPreferences("AppPref", MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putString("SELECTED_STYLE", selectedStyle)
+                apply()
+            }
+        }
+
     }

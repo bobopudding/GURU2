@@ -17,12 +17,19 @@ import android.graphics.PorterDuffXfermode
 import android.graphics.Rect
 import android.graphics.RectF
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
+import android.widget.ImageButton
 
 
 class MypageActivity : AppCompatActivity() {
 
     private val PICK_IMAGE_REQUEST = 1
     private lateinit var binding: ActivityMypageBinding
+    private lateinit var textNickname: TextView
+    private lateinit var buttonStyle: Button
+    private lateinit var textStyle: TextView
+    private lateinit var imageBtnModify: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +48,43 @@ class MypageActivity : AppCompatActivity() {
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
 
+        val sharedPref = getSharedPreferences("AppPref", MODE_PRIVATE)
+        val nickname = sharedPref.getString("NICKNAME", "사용자") ?: "사용자"
+        val selectedStyle = sharedPref.getString("SELECTED_STYLE", "")
+
+        textNickname = findViewById(R.id.textNickname)
+        textNickname.text = "$nickname"
+
+        buttonStyle = findViewById(R.id.buttonStyle)
+        textStyle = findViewById(R.id.textStyle)
+        // 가져온 스타일 정보에 따라 버튼과 텍스트뷰에 다른 문자열을 표시
+        when (selectedStyle) {
+            "오피스룩" -> {
+                binding.buttonStyle.text = "오피스룩"
+                binding.textStyle.text = "오피스룩"
+            }
+            "캐주얼" -> {
+                binding.buttonStyle.text = "캐주얼"
+                binding.textStyle.text = "캐주얼"
+            }
+            "걸리시" -> {
+                binding.buttonStyle.text = "걸리시"
+                binding.textStyle.text = "걸리시"
+            }
+            // 선택한 스타일에 해당하지 않는 경우
+            else -> {
+                binding.buttonStyle.text = "error"
+                binding.textStyle.text = "error"
+            }
+        }
+
+        imageBtnModify = findViewById(R.id.imageBtnModify)
+
+        imageBtnModify.setOnClickListener {
+            // 스타일 액티비티로 이동
+            val styleIntent = Intent(this@MypageActivity, StyleActivity::class.java)
+            startActivity(styleIntent)
+        }
     }
 
     private fun showConfirmationDialog() {
