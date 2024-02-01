@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="마이페이지"
-            android:fontFamily="@font/pretendardbold"
+            android:fontFamily="@font/pretendardsemibold"
             android:textColor="@color/white"
             android:textSize="18sp" />
 

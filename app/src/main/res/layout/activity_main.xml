@@ -17,16 +17,14 @@
         android:orientation="horizontal">
 
     </LinearLayout>
+
     <ImageView
         android:id="@+id/imageViewLocation"
         android:layout_width="19dp"
         android:layout_height="23dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="28dp"
         android:foreground="@drawable/location_icon"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDate"
-        app:layout_constraintEnd_toStartOf="@+id/textViewLocation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,15 +32,13 @@
         android:id="@+id/textViewLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/pretendardmedium"
         android:gravity="left"
         android:text="마포구 상암동"
         android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDate"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewRefresh"
-        app:layout_constraintStart_toEndOf="@+id/imageViewLocation"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -50,16 +46,11 @@
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="106dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="30dp"
         android:background="#00D9F3FE"
         android:foreground="@drawable/location_redo"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDate"
-        app:layout_constraintEnd_toStartOf="@+id/ImageButtonForecast"
         app:layout_constraintStart_toEndOf="@+id/textViewLocation"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewTemperature"
@@ -214,6 +205,7 @@
         android:id="@+id/imageButton"
         android:layout_width="24dp"
         android:layout_height="17dp"
+        android:layout_marginBottom="4dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
