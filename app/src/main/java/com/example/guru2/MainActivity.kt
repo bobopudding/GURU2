@@ -260,6 +260,9 @@ class MainActivity : AppCompatActivity() {
         val airQualityUrl =
             "https://api.openweathermap.org/data/2.5/air_pollution?lat=$latitude&lon=$longitude&appid=$apiKey"
 
+        Log.d("MainActivity", "getAirQuality 시작")
+
+
         val thread = Thread {
             try {
                 val url = URL(airQualityUrl)
@@ -268,6 +271,7 @@ class MainActivity : AppCompatActivity() {
                 connection.connect()
 
                 val responseCode = connection.responseCode
+                Log.d("MainActivity", "HTTP 응답 코드: $responseCode")
                 if (responseCode == HttpsURLConnection.HTTP_OK) {
                     val reader = BufferedReader(InputStreamReader(connection.inputStream))
                     val response = StringBuilder()
@@ -275,18 +279,26 @@ class MainActivity : AppCompatActivity() {
                     while (reader.readLine().also { line = it } != null) {
                         response.append(line)
                     }
+                    Log.d("MainActivity", "미세먼지 API 응답 데이터: $response")
                     val jsonResponse = JSONObject(response.toString())
-                    val aqi = jsonResponse.getJSONArray("list").getJSONObject(0).getJSONObject("main").getInt("aqi")
+
+                    val components = jsonResponse.optJSONObject("list")?.optJSONArray("components")
+                    val pm10 = components?.optJSONObject(1)?.optInt("value", -1) ?: -1
                     val airQualityText = when {
-                        aqi <= 30 -> "좋음"
-                        aqi <= 80 -> "보통"
-                        aqi <= 150 -> "나쁨"
+                        pm10 <= 20 -> "매우 좋음"
+                        pm10 <= 50 -> "좋음"
+                        pm10 <= 100 -> "보통"
+                        pm10 <= 200 -> "나쁨"
                         else -> "매우 나쁨"
                     }
+
+                    // 미세먼지 정보 출력
+                    val airQualityString = "미세먼지: $airQualityText"
                     runOnUiThread {
                         val textViewAirQuality = findViewById<TextView>(R.id.textViewAirQuality)
-                        textViewAirQuality.text = "미세먼지: $airQualityText"
+                        textViewAirQuality.text = airQualityString
                     }
+
                 } else {
                     Log.e("MainActivity", "네트워크 호출 오류, 응답 코드: $responseCode")
                 }
