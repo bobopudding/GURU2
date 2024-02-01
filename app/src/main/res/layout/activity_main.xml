@@ -38,7 +38,7 @@
         android:layout_marginTop="28dp"
         android:fontFamily="@font/pretendardmedium"
         android:gravity="left"
-        android:text="마포구 상암동"
+        android:text="현재 내 위치"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/textViewDate"
         app:layout_constraintEnd_toStartOf="@+id/imageViewRefresh"
@@ -189,7 +189,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/pretendardmedium"
-        android:text="미세먼지: 상당히 나쁨"
+        android:text="미세먼지: 알 수 없음"
         android:textAlignment="center"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="@+id/imageAir"
@@ -280,6 +280,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

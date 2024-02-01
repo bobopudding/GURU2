@@ -20,6 +20,13 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.ImageButton
+import android.database.Cursor
+import android.view.View
+import java.util.Calendar
+import java.text.SimpleDateFormat
+import java.util.Locale
+
+
 
 
 class MypageActivity : AppCompatActivity() {
@@ -31,10 +38,16 @@ class MypageActivity : AppCompatActivity() {
     private lateinit var textStyle: TextView
     private lateinit var imageBtnModify: ImageButton
 
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         // changeprofile ImageView를 클릭하면 사진 선택 다이얼로그 표시
         binding.changeprofile.setOnClickListener {
@@ -52,6 +65,9 @@ class MypageActivity : AppCompatActivity() {
         val nickname = sharedPref.getString("NICKNAME", "사용자") ?: "사용자"
         val selectedStyle = sharedPref.getString("SELECTED_STYLE", "")
 
+
+
+
         textNickname = findViewById(R.id.textNickname)
         textNickname.text = "$nickname"
 
@@ -63,10 +79,12 @@ class MypageActivity : AppCompatActivity() {
                 binding.buttonStyle.text = "오피스룩"
                 binding.textStyle.text = "오피스룩"
             }
+
             "캐주얼" -> {
                 binding.buttonStyle.text = "캐주얼"
                 binding.textStyle.text = "캐주얼"
             }
+
             "걸리시" -> {
                 binding.buttonStyle.text = "걸리시"
                 binding.textStyle.text = "걸리시"
@@ -85,7 +103,11 @@ class MypageActivity : AppCompatActivity() {
             val styleIntent = Intent(this@MypageActivity, StyleActivity::class.java)
             startActivity(styleIntent)
         }
+
     }
+
+
+
 
     private fun showConfirmationDialog() {
         val alertDialog = AlertDialog.Builder(this)
@@ -155,9 +177,12 @@ class MypageActivity : AppCompatActivity() {
         alertDialog.setMessage("프로필 사진이 성공적으로 변경되었습니다.")
         alertDialog.setPositiveButton("확인") { dialog, which ->
             // 사용자가 확인을 누른 경우 아무 작업도 필요하지 않음
+
+            val newStyle = "프로필 사진 변경"
         }
         alertDialog.show()
     }
+
 
 
     //툴바 뒤로가기 버튼 동작

@@ -26,6 +26,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.launch
+import android.content.Intent
+import android.app.Activity
+
+
+
 
 class WeathercastActivity : AppCompatActivity() {
 
@@ -134,8 +139,12 @@ class WeathercastActivity : AppCompatActivity() {
         windDeg.text = "풍향은 ${weatherInfo.windDeg}°"
         windSpeed.text = "풍속은 ${weatherInfo.windSpeed} m/s"
 
+
         Log.d("WeathercastActivity", "displayWeatherInfo 함수 호출")
+        Log.d("WeathercastActivity", "전달할 최저 온도: ${weatherInfo.tempMin}, 최고 온도: ${weatherInfo.tempMax}")
     }
+
+
 
     data class WeatherInfo(
         val name: String,
