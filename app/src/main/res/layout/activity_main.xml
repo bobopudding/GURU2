@@ -209,22 +209,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
 
-    <TextView
-        android:id="@+id/textMoreFashion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="360dp"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/pretendardmedium"
-        android:text="코디 더보기"
-        android:textAlignment="center"
-        android:textColor="@color/gray"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageCharacterImage" />
-
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="24dp"
@@ -234,7 +218,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMoreFashion"
         app:srcCompat="@drawable/fashioinfo_button" />
 
     <ImageView

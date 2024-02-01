@@ -9,6 +9,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.view.View
 import android.graphics.Color
+import android.util.Log
+
 
 class StyleActivity : AppCompatActivity() {
 
@@ -47,6 +49,8 @@ class StyleActivity : AppCompatActivity() {
                     button.setBackgroundColor(Color.parseColor("#88C6F7"))
                     selectedButton = button
                     selectedStyle = button.text.toString()
+
+                    Log.d("Debug", "Selected Style: $selectedStyle")
                 } else {
                     // 이미 선택된 버튼을 다시 클릭하면 선택을 해제합니다
                     selectedButton = null

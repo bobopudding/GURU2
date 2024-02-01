@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var weatherState: TextView
     private lateinit var temperature: TextView
     private lateinit var weatherIcon: ImageView
+    private lateinit var weatherImage: ImageView
     private lateinit var characterImage: ImageView
 
     private lateinit var mLocationManager: LocationManager
@@ -119,6 +120,7 @@ class MainActivity : AppCompatActivity() {
                 temperature = findViewById(R.id.textViewTemperature)
                 weatherState = findViewById(R.id.textTemperatureInfo)
                 weatherIcon = findViewById(R.id.imageWeatherIcon)
+                weatherImage = findViewById(R.id.imageWeatherImage)
                 characterImage = findViewById(R.id.imageCharacterImage)
 
                 // 위치 서비스 클라이언트 초기화
@@ -375,22 +377,66 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     temperature.text = weather.tempString + " ℃"
                     weatherState.text = weather.weatherType
-                    val resourceID = resources.getIdentifier(weather.icon, "drawable", packageName)
-                    weatherIcon.setImageResource(resourceID)
+                    val iconResourceID = resources.getIdentifier(weather.icon, "drawable", packageName)
+                    weatherIcon.setImageResource(iconResourceID)
+                    val imageResourceID = resources.getIdentifier(weather.image, "drawable", packageName)
+                    weatherImage.setImageResource(imageResourceID)
+
 
                     // WeatherData에서 가져온 온도를 Double로 변환합니다.
                     val temperature = weather.tempString.toDoubleOrNull() ?: 0.0
 
-                    // 온도에 따라 다른 이미지 설정
-                    when {
-                        temperature <= 5 -> characterImage.setImageResource(R.drawable.casual_1)
-                        temperature in 6.0..11.0 -> characterImage.setImageResource(R.drawable.casual_2)
-                        temperature in 12.0..19.0 -> characterImage.setImageResource(R.drawable.casual_3)
-                        temperature in 20.0..26.0 -> characterImage.setImageResource(R.drawable.casual_4)
-                        else -> characterImage.setImageResource(R.drawable.casual_5)
-                    }
+                    // 선택한 스타일에 따른 코디 이미지 설정
+                    val selectedStyle = intent.getStringExtra("selectedStyle").toString()
+
+                    // 이미지 리소스 ID를 가져오는 함수 호출
+                    val codiResource = getCodiResource(selectedStyle, temperature)
+
+                    // 설정된 코디 이미지를 characterImage에 적용
+                    characterImage.setImageResource(codiResource)
                 }
             }
+
+    // 온도에 따른 이미지 리소스 ID를 반환하는 함수
+    private fun getCodiResource(selectedStyle: String?, temperature: Double): Int {
+        return when (selectedStyle) {
+            "buttonOfficeLook" -> getCodiForOfficeLook(temperature)
+            "buttonCasual" -> getCodiForCasual(temperature)
+            "buttonGirly" -> getCodiForGirly(temperature)
+            else -> R.drawable.casual_5 // 선택한 스타일이 없는 경우 기본 이미지
+        }
+    }
+
+    // 각 스타일에 따라 코디 이미지 리소스 ID를 반환하는 함수들
+    private fun getCodiForOfficeLook(temperature: Double): Int {
+        return when {
+            temperature <= 5 -> R.drawable.office_1
+            temperature in 6.0..11.0 -> R.drawable.office_2
+            temperature in 12.0..19.0 -> R.drawable.office_3
+            temperature in 20.0..26.0 -> R.drawable.office_4
+            else -> R.drawable.office_5
+        }
+    }
+
+    private fun getCodiForCasual(temperature: Double): Int {
+        return when {
+            temperature <= 5 -> R.drawable.casual_1
+            temperature in 6.0..11.0 -> R.drawable.casual_2
+            temperature in 12.0..19.0 -> R.drawable.casual_3
+            temperature in 20.0..26.0 -> R.drawable.casual_4
+            else -> R.drawable.casual_5
+        }
+    }
+
+    private fun getCodiForGirly(temperature: Double): Int {
+        return when {
+            temperature <= 5 -> R.drawable.girlish_1
+            temperature in 6.0..11.0 -> R.drawable.girlish_2
+            temperature in 12.0..19.0 -> R.drawable.girlish_3
+            temperature in 20.0..26.0 -> R.drawable.girlish_4
+            else -> R.drawable.girlish_5
+        }
+    }
 
             private fun getAddressFromLocation(latitude: Double, longitude: Double) {
                 val geocoder = Geocoder(this, Locale.KOREA)
