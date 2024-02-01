@@ -129,15 +129,15 @@ class WeathercastActivity : AppCompatActivity() {
         val windDeg = findViewById<TextView>(R.id.textViewWindDeg)
         val windSpeed = findViewById<TextView>(R.id.textViewWindSpeed)
 
-        description.text = "날씨는 ${weatherInfo.description} 입니다."
-        currentTemp.text = "현재 온도는 ${weatherInfo.temp} ℃"
-        feelsLikeTemp.text = "체감 온도는 ${weatherInfo.feelsLike} ℃"
-        minTemp.text = "최저 기온은 ${weatherInfo.tempMin} ℃"
-        maxTemp.text = "최고 기온은 ${weatherInfo.tempMax} ℃"
-        humidity.text = "습도는 ${weatherInfo.humidity}%"
-        pressure.text = "기압은 ${weatherInfo.pressure} hPa"
-        windDeg.text = "풍향은 ${weatherInfo.windDeg}°"
-        windSpeed.text = "풍속은 ${weatherInfo.windSpeed} m/s"
+        description.text = "${weatherInfo.description}"
+        currentTemp.text = "${weatherInfo.temp} ℃"
+        feelsLikeTemp.text = "${weatherInfo.feelsLike} ℃"
+        minTemp.text = "${weatherInfo.tempMin} ℃"
+        maxTemp.text = "${weatherInfo.tempMax} ℃"
+        humidity.text = "${weatherInfo.humidity}%"
+        pressure.text = "${weatherInfo.pressure} hPa"
+        windDeg.text = "${weatherInfo.windDeg}°"
+        windSpeed.text = "${weatherInfo.windSpeed} m/s"
 
 
         Log.d("WeathercastActivity", "displayWeatherInfo 함수 호출")
