@@ -387,57 +387,40 @@ class MainActivity : AppCompatActivity() {
                     // WeatherData에서 가져온 온도를 Double로 변환합니다.
                     val temperature = weather.tempString.toDoubleOrNull() ?: 0.0
 
-                    // 선택한 스타일에 따른 코디 이미지 설정
-                    val selectedStyle = intent.getStringExtra("selectedStyle").toString()
+                    // 선택한 스타일 불러오기
+                    val sharedPref = getSharedPreferences("AppPref", MODE_PRIVATE)
+                    val selectedStyle = sharedPref.getString("SELECTED_STYLE", "")
 
-                    // 이미지 리소스 ID를 가져오는 함수 호출
-                    val codiResource = getCodiResource(selectedStyle, temperature)
+                    val resourceId = when (selectedStyle) {
+                        "오피스룩" -> when {
+                            temperature <= 5 -> R.drawable.office_1
+                            temperature in 6.0..11.0 -> R.drawable.office_2
+                            temperature in 12.0..19.0 -> R.drawable.office_3
+                            temperature in 20.0..26.0 -> R.drawable.office_4
+                            else -> R.drawable.office_5
+                        }
+                        "캐주얼" -> when {
+                            temperature <= 5 -> R.drawable.casual_1
+                            temperature in 6.0..11.0 -> R.drawable.casual_2
+                            temperature in 12.0..19.0 -> R.drawable.casual_3
+                            temperature in 20.0..26.0 -> R.drawable.casual_4
+                            else -> R.drawable.casual_5
+                        }
+                        "걸리시" -> when {
+                            temperature <= 5 -> R.drawable.girlish_1
+                            temperature in 6.0..11.0 -> R.drawable.girlish_2
+                            temperature in 12.0..19.0 -> R.drawable.girlish_3
+                            temperature in 20.0..26.0 -> R.drawable.girlish_4
+                            else -> R.drawable.girlish_5
+                        }
+                        else -> R.drawable.office_1
+                    }
 
-                    // 설정된 코디 이미지를 characterImage에 적용
-                    characterImage.setImageResource(codiResource)
+                    // 설정된 이미지 리소스를 characterImage에 적용
+                    characterImage.setImageResource(resourceId)
+
                 }
             }
-
-    // 온도에 따른 이미지 리소스 ID를 반환하는 함수
-    private fun getCodiResource(selectedStyle: String?, temperature: Double): Int {
-        return when (selectedStyle) {
-            "buttonOfficeLook" -> getCodiForOfficeLook(temperature)
-            "buttonCasual" -> getCodiForCasual(temperature)
-            "buttonGirly" -> getCodiForGirly(temperature)
-            else -> R.drawable.casual_5 // 선택한 스타일이 없는 경우 기본 이미지
-        }
-    }
-
-    // 각 스타일에 따라 코디 이미지 리소스 ID를 반환하는 함수들
-    private fun getCodiForOfficeLook(temperature: Double): Int {
-        return when {
-            temperature <= 5 -> R.drawable.office_1
-            temperature in 6.0..11.0 -> R.drawable.office_2
-            temperature in 12.0..19.0 -> R.drawable.office_3
-            temperature in 20.0..26.0 -> R.drawable.office_4
-            else -> R.drawable.office_5
-        }
-    }
-
-    private fun getCodiForCasual(temperature: Double): Int {
-        return when {
-            temperature <= 5 -> R.drawable.casual_1
-            temperature in 6.0..11.0 -> R.drawable.casual_2
-            temperature in 12.0..19.0 -> R.drawable.casual_3
-            temperature in 20.0..26.0 -> R.drawable.casual_4
-            else -> R.drawable.casual_5
-        }
-    }
-
-    private fun getCodiForGirly(temperature: Double): Int {
-        return when {
-            temperature <= 5 -> R.drawable.girlish_1
-            temperature in 6.0..11.0 -> R.drawable.girlish_2
-            temperature in 12.0..19.0 -> R.drawable.girlish_3
-            temperature in 20.0..26.0 -> R.drawable.girlish_4
-            else -> R.drawable.girlish_5
-        }
-    }
 
             private fun getAddressFromLocation(latitude: Double, longitude: Double) {
                 val geocoder = Geocoder(this, Locale.KOREA)
