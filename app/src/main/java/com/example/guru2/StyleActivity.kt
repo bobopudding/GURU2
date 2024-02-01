@@ -64,10 +64,27 @@ class StyleActivity : AppCompatActivity() {
             if (selectedStyle == null) {
                 Toast.makeText(this, "하나를 선택해주세요", Toast.LENGTH_SHORT).show()
             } else {
-                    val intent = Intent(this@StyleActivity, MainActivity::class.java)
-                intent.putExtra("selectedStyle", selectedStyle)
-                startActivity(intent)
+                saveSelectedStyle(selectedStyle!!)
+
+                // 스타일을 MainActivity로 전달
+                val mainintent = Intent(this@StyleActivity, MainActivity::class.java)
+                mainintent.putExtra("selectedStyle", selectedStyle)
+                startActivity(mainintent)
+
+                // 스타일을 MypageActivity로 전달
+                val mypageIntent = Intent(this@StyleActivity, MypageActivity::class.java)
+                mypageIntent.putExtra("selectedStyle", selectedStyle)
                 }
             }
         }
+
+        private fun saveSelectedStyle(selectedStyle: String) {
+            // 선택한 스타일을 'AppPref' 이름의 SharedPreferences에 저장
+            val sharedPref = this.getSharedPreferences("AppPref", MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putString("SELECTED_STYLE", selectedStyle)
+                apply()
+            }
+        }
+
     }
