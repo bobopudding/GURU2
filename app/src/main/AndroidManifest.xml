@@ -17,39 +17,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GURU2"
         tools:targetApi="31">
+
+        <!-- SplashActivity with MAIN and LAUNCHER intent-filters -->
         <activity
-            android:name=".TemperatureActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PictureActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StyleHistoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MypageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WeathercastActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StyleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NicknameActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StartActivity"
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Other activities without MAIN and LAUNCHER intent-filters -->
+        <activity android:name=".StartActivity" android:exported="false" />
+        <activity android:name=".TemperatureActivity" android:exported="false" />
+        <activity android:name=".PictureActivity" android:exported="false" />
+        <activity android:name=".StyleHistoryActivity" android:exported="false" />
+        <activity android:name=".MypageActivity" android:exported="false" />
+        <activity android:name=".WeathercastActivity" android:exported="false" />
+        <activity android:name=".StyleActivity" android:exported="false" />
+        <activity android:name=".NicknameActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

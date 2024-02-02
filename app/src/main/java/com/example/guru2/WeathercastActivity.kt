@@ -28,6 +28,11 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.launch
 import android.content.Intent
 import android.app.Activity
+import kotlinx.coroutines.*
+import kotlinx.coroutines.launch
+import java.util.*
+import kotlinx.coroutines.*
+import kotlinx.coroutines.launch
 
 
 
@@ -139,12 +144,8 @@ class WeathercastActivity : AppCompatActivity() {
         windDeg.text = "${weatherInfo.windDeg}°"
         windSpeed.text = "${weatherInfo.windSpeed} m/s"
 
-
         Log.d("WeathercastActivity", "displayWeatherInfo 함수 호출")
-        Log.d("WeathercastActivity", "전달할 최저 온도: ${weatherInfo.tempMin}, 최고 온도: ${weatherInfo.tempMax}")
     }
-
-
 
     data class WeatherInfo(
         val name: String,
@@ -159,4 +160,3 @@ class WeathercastActivity : AppCompatActivity() {
         val windSpeed: Double
     )
 }
-
