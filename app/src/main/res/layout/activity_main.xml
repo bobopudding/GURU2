@@ -60,7 +60,7 @@
         android:layout_marginTop="16dp"
         android:gravity="left"
         android:fontFamily="@font/pretendard"
-        android:text="22 ℃"
+        android:text="-- ℃"
         android:textSize="64sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageAir"
