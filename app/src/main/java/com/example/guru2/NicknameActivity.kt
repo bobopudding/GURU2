@@ -41,8 +41,7 @@ class NicknameActivity : AppCompatActivity() {
                 Toast.makeText(this, "닉네임을 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else if (nickname.length > 20) {
                 Toast.makeText(this, "20자를 초과했습니다.", Toast.LENGTH_SHORT).show()
-            }  else if (DBHelper(this).isWordInDatabase(nickname, this)) {
-
+            } else if (DBHelper(this).isWordInDatabase(nickname, this)) {
                 // 데이터베이스에 있는 단어를 입력한 경우
                 Toast.makeText(this, "올바른 단어를 사용해주세요. :)", Toast.LENGTH_SHORT).show()
             } else {

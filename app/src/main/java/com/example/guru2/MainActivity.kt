@@ -103,10 +103,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
         val Forecast = findViewById<ImageButton>(R.id.ImageButtonForecast)
-            Forecast.setOnClickListener {
+        Forecast.setOnClickListener {
                 val apiKey = "94a991754841d780d8efb651991af19f"
                 val intent = Intent(this, WeathercastActivity::class.java)
                 // 위치 정보를 WeathercastActivity로 전달
@@ -218,14 +216,7 @@ class MainActivity : AppCompatActivity() {
 
                 Log.d("MainActivity", "메인 액티비티에서 전달받은 최저 온도: $minTemp, 최고 온도: $maxTemp")
 
-                // UI 업데이트 코드 추가
-                if (minTemp != null && maxTemp != null) {
-                    // 최저 기온과 최고 기온을 UI에 업데이트
-                    val minTempTextView = findViewById<TextView>(R.id.textViewLowTemperature)
-                    val maxTempTextView = findViewById<TextView>(R.id.textViewHighTemperature)
-                    minTempTextView.text = "$minTemp"
-                    maxTempTextView.text = "$maxTemp"
-                }
+
             }
         }
 
@@ -421,7 +412,8 @@ class MainActivity : AppCompatActivity() {
 
 
             runOnUiThread {
-                temperature.text = weather.tempString
+                val temperatureString = "${weather.tempString}℃"
+                temperature.text = temperatureString
                 weatherState.text = weather.weatherType
                 val iconResourceID = resources.getIdentifier(weather.icon, "drawable", packageName)
                 weatherIcon.setImageResource(iconResourceID)

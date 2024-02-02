@@ -14,7 +14,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_ID = "id"
         const val COLUMN_WORD = "word"
 
-        private val initialWords = arrayOf("idiot", "fool","moron","imbecile","stupid","dumb")
+        private val initialWords = arrayOf("fuck", "idiot", "fool","moron","Imbecile","Stupid","Dumb")
 
     }
 
@@ -43,6 +43,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         cursor.close()
         db.close()
         return exists
-    }
+
+}
+
 
 }
