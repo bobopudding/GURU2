@@ -34,14 +34,19 @@ class NicknameActivity : AppCompatActivity() {
             charCountTextView.text = "$charCount/20"
         }
 
-        // '다음으로' 버튼 클릭 시 이벤트 처리를 추가
         buttonConfirm.setOnClickListener {
             val nickname = editTextNickname.text.toString().trim()
+
             if (nickname.isEmpty()) {
                 Toast.makeText(this, "닉네임을 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else if (nickname.length > 20) {
                 Toast.makeText(this, "20자를 초과했습니다.", Toast.LENGTH_SHORT).show()
+            }  else if (DBHelper(this).isWordInDatabase(nickname, this)) {
+
+                // 데이터베이스에 있는 단어를 입력한 경우
+                Toast.makeText(this, "올바른 단어를 사용해주세요. :)", Toast.LENGTH_SHORT).show()
             } else {
+                // 데이터베이스에 없는 단어를 입력한 경우
                 AlertDialog.Builder(this).apply {
                     setMessage("\"$nickname\" 님이 맞습니까?")
                     setPositiveButton("맞아요") { _, _ ->
