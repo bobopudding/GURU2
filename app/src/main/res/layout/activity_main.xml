@@ -60,7 +60,7 @@
         android:layout_marginTop="16dp"
         android:gravity="left"
         android:fontFamily="@font/pretendard"
-        android:text="22"
+        android:text="22 ℃"
         android:textSize="64sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageAir"
@@ -83,73 +83,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewLocation" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageWeatherImage"
-        app:layout_constraintEnd_toStartOf="@+id/imageAir"
-        app:layout_constraintStart_toEndOf="@+id/textViewTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDate"
-        app:layout_constraintVertical_bias="0.0">
-
-        <ImageView
-            android:id="@+id/imageHighTemp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:foreground="@drawable/highest_arrow" />
-
-        <TextView
-            android:id="@+id/textViewHighTemperature"
-            android:layout_width="22dp"
-            android:layout_height="27dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="16dp"
-            android:fontFamily="@font/pretendard"
-            android:gravity="right"
-            android:text="10"
-            android:textColor="@color/gray"
-            android:textSize="20dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageWeatherImage"
-        app:layout_constraintEnd_toStartOf="@+id/imageAir"
-        app:layout_constraintStart_toEndOf="@+id/textViewTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.0">
-
-        <ImageView
-            android:id="@+id/imageLowTemp"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:foreground="@drawable/down_arrow" />
-
-        <TextView
-            android:id="@+id/textViewLowTemperature"
-            android:layout_width="30dp"
-            android:layout_height="27dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:fontFamily="@font/pretendard"
-            android:gravity="right"
-            android:text="-10"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/textViewHighTemperature" />
-    </LinearLayout>
 
     <ImageButton
         android:id="@+id/ImageButtonMyPage"

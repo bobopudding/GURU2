@@ -14,7 +14,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_ID = "id"
         const val COLUMN_WORD = "word"
 
-        private val initialWords = arrayOf("fuck", "idiot", "fool","moron","Imbecile","Stupid","Dumb")
+        private val initialWords = arrayOf("idiot", "fool","moron","imbecile","stupid","dumb")
 
     }
 
@@ -34,15 +34,15 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
         onCreate(db)
     }
-}
+    fun isWordInDatabase(word: String, context: Context): Boolean {
+        val dbHelper = DBHelper(context)
+        val db = dbHelper.readableDatabase
+        val query = "SELECT * FROM ${DBHelper.TABLE_NAME} WHERE ${DBHelper.COLUMN_WORD} = ?"
+        val cursor = db.rawQuery(query, arrayOf(word))
+        val exists = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+        return exists
+    }
 
-fun isWordInDatabase(word: String, context: Context): Boolean {
-    val dbHelper = DBHelper(context)
-    val db = dbHelper.readableDatabase
-    val query = "SELECT * FROM ${DBHelper.TABLE_NAME} WHERE ${DBHelper.COLUMN_WORD} = ?"
-    val cursor = db.rawQuery(query, arrayOf(word))
-    val exists = cursor.moveToFirst()
-    cursor.close()
-    db.close()
-    return exists
 }
